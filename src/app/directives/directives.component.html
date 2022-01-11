@@ -1,0 +1,58 @@
+<div class="border">
+    <h2>directives works!</h2>
+    <span>*ngIf</span><br>
+    <div *ngIf='course.length > 0; then courseList else noCourses'></div>
+    <ng-template #courseList>List of Courses</ng-template>
+
+    <ng-template #noCourses>No courses yet...!</ng-template>
+    <hr>
+    <br><span>hidden attribute</span><br>
+
+    <div [hidden]="course.length==0">List of Courses</div>
+    <div [hidden]="course.length > 0">No courses yet/....!</div>
+    <hr>
+    <br><span>ngSwitch</span><br>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="viewMode=='map'" (click)="viewMode='map'" aria-current="page" >Map View</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="viewMode=='list'" (click)="viewMode='list'" >List View</a>
+        </li>
+    </ul>
+    <div class="text-center" [ngSwitch]="viewMode">
+        <div *ngSwitchCase="'map'">Map View Content</div>
+        <div *ngSwitchCase="'list'">List View Content</div>
+        <div *ngSwitchDefault>Otherwise View Content</div>
+    </div>
+    <br><span>ngFor</span><br>
+    <button class="btn btn-warning" (click)="onLoadCourses()">Load Courses </button>
+
+    <button class="btn btn-primary" (click)="onAddNew()">Add new </button>
+    
+    <ul >
+        <li *ngFor="let course of courses; index as i; even as isEven; trackBy: trackCourses" class="p-2 m-2">{{i}} --: {{course.name}} <span *ngIf='isEven'>(EVEN)</span>
+            <button class="btn btn-danger" (click)="onRemove(course)">Remove </button>
+        </li>
+    </ul>
+    <br><span>ngClass</span><br>
+    <button class="btn change-bg" [ngClass]="{
+        'red': isSelected,
+        'blue': !isSelected
+    }" (click)='changeBg()'>change Background</button>
+
+    <br><span>ngStyle</span> <hr><br>
+
+    <button 
+    class="btn"
+    (click)="saveStyle()"
+    [ngStyle]="{
+        'backgroundColor': canSave? 'blue' : 'gray',
+        'color':canSave? 'white': 'black',
+        'fontWeight': canSave? 'bold': 'normal'
+    }"
+    > Save Style</button>
+
+    <br><span>Custom Directives</span> <hr><br>
+    <input type="text" [appInputFormat]="'uppercase'">
+</div>

@@ -9,7 +9,7 @@ import { Component } from "@angular/core";
         {{course}}
         </li>
         </ul>
-        <img [src]="imgUrl" alt="no Photo"/>
+        <img class="myImg" [src]="imgUrl" alt="no Photo"/>
         <table>
             <tr>
                 <td [attr.colspan]="colSpan">test</td>

@@ -17,6 +17,6 @@ export class InputFormatDirective {
     else
       this.el.nativeElement.value=value.toUpperCase();
 
-  }us
+  }
 
 }

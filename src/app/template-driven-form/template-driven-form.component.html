@@ -1,0 +1,48 @@
+<h2>Template driven form works!</h2>
+
+<form #form='ngForm' (ngSubmit)='submit(form)'>
+    <div class="from-group">
+        <label for="firstName">First Name</label>
+        <input required minlength="3" maxlength="10" pattern="rushi" ngModel type="text" id="firstName" #firstName='ngModel' (change)="logFirstName(firstName)" name="firstName" class="form-control">
+        <div class="alert alert-danger" *ngIf='firstName.touched && !firstName.valid'>
+            <div *ngIf="firstName.errors?.['required']">First Name is required...!</div>
+            <div *ngIf="firstName.errors?.['minlength']">First Name should be minimum 3 charactors</div>
+            <div *ngIf="firstName.errors?.['pattern']">First Name dosen't match</div> 
+        </div>
+    </div>
+    
+    <div class="from-group"> 
+        <label for="comment">Comment</label>
+    <textarea ngModel name="comment" id="comment" class="form-control" cols="20" rows="5"></textarea>
+
+    </div>
+    <div class="checkbox">
+        <label>
+        <input type="checkbox" ngModel name="isSubscribe"> Subscribe to mailbox
+    </label>
+    </div>
+    <div class="form-group">
+        <label for="contactMethod">Contact Method</label>
+        <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+           <option value="">Select Contact Method</option>
+            <!-- <option *ngFor="let method of contactMethod" [ngValue]="method">{{method.name}}</option> -->
+            <option *ngFor="let method of contactMethod" [value]="method.id">{{method.name}}</option>
+        </select>
+    </div>
+    <div class="mt-2"></div>
+    <div *ngFor="let conMeth of contactMethod" class="radio">
+        <label >
+            <input ngModel type="radio" name="conMethod" [value]="conMeth.id">
+            {{conMeth.name}}
+        </label>
+    </div>
+    <!-- <div class="radio">
+        <label >
+            <input ngModel type="radio" name="conMethod" value="2">
+            Phone
+        </label>
+    </div> -->
+    <hr>
+    <p>{{ form.value | json}}</p>
+    <button class="btn btn-primary my-3" [disabled]='!form.valid'>Submit</button>
+</form> 

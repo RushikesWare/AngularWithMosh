@@ -1,0 +1,18 @@
+<h2>Animation works....!</h2>
+<h1>=============Todos========================</h1>
+
+<input #itemInput
+  class="form-control"
+  (keyup.enter)="addItem(itemInput)">
+
+<div *ngIf="items" class="list-group" >
+    <!-- @fade @slide  -->
+        
+  <button
+      @todoAnimation
+      type="button"
+      *ngFor="let item of items"
+      (click)="removeItem(item)"
+      class="list-group-item"
+      >{{ item }}</button>
+</div> 

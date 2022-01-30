@@ -1,0 +1,19 @@
+<h2>Angular material works.....!</h2>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<hr>
+<section class="example-section">
+    <mat-checkbox 
+    [checked]='isChecked'
+    #showDetails
+    (change)='onClick($event)'
+    class="example-margin">Show Detail..</mat-checkbox>
+
+    <div *ngIf='showDetails.checked'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam aspernatur ipsum, iusto voluptatem incidunt eos
+        cumque nostrum repellat voluptas repudiandae beatae ad quidem? Excepturi dicta quisquam sit iste rerum nihil!
+    </div>
+</section>
+<hr>
+<mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="1" [checked]='isCheckedRadio'>Male</mat-radio-button>
+    <mat-radio-button value="2" >Female</mat-radio-button>
+  </mat-radio-group>

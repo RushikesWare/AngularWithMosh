@@ -27,6 +27,14 @@ import { NotFoundComponent } from './navigation/not-found/not-found.component';
 import { GithubFollowersComponent } from './navigation/github-followers/github-followers.component';
 import { PostComponent } from './navigation/post/post.component';
 import { AnimationComponent } from './animation/animation.component';
+import { AngularMaterialComponent } from './angular-material/angular-material.component';
+//Angular Material importers
+
+import { MatSliderModule } from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 @NgModule({
   declarations: [
@@ -47,6 +55,7 @@ import { AnimationComponent } from './animation/animation.component';
     GithubFollowersComponent,
     PostComponent,
     AnimationComponent,
+    AngularMaterialComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +64,9 @@ import { AnimationComponent } from './animation/animation.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatRadioModule,
     RouterModule.forRoot([
       {path:'', component:HomeComponent},
       {path:'profile/:username', component:GithubProfileComponent},
